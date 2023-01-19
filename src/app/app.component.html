@@ -1,0 +1,59 @@
+
+<router-outlet></router-outlet>
+
+<div cdkDropListGroup>
+  <div class="container">
+    <h2>Mais Vendidos</h2>
+
+    <div
+    id="incoming"
+      cdkDropList
+      [cdkDropListData]="incomingItems"
+      cdkDropListConnectedTo="available"
+      class="list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="box" *ngFor="let item of incomingItems" cdkDrag>{{item}}</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>Ofertas</h2>
+
+    <div
+    id="available"
+      cdkDropList
+      [cdkDropListData]="availableItems"
+      cdkDropListConnectedTo="sold"
+      class="list"
+      (cdkDropListDropped)="drop($event)"
+      >
+      <div class="box" *ngFor="let item of availableItems" cdkDrag>{{item}}</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>Normal</h2>
+
+    <div
+    id="sold"
+      cdkDropList
+      [cdkDropListData]="soldItems"
+      cdkDropListConnectedTo="available"
+      class="list"
+      (cdkDropListDropped)="drop($event)"
+      >
+      <div class="box" *ngFor="let item of soldItems" cdkDrag>{{item}}</div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Disable Dragging -->
+ <!-- <div cdkDropList class="list-2" (cdkDropListDropped)="drop($event)">
+  <div
+    class="box-2"
+    *ngFor="let item of items"
+    cdkDrag
+    [cdkDragDisabled]="item.disabled">{{item.value}}</div>
+</div> -->
